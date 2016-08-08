@@ -1,3 +1,5 @@
+/* eslint-env protractor */
+/* global describe, expect, it */
 describe('angularjs trades  list', function () {
     it('should display trade', function () {
         browser.get('localhost:9000');
@@ -8,6 +10,6 @@ describe('angularjs trades  list', function () {
         expect(tradesList.count()).toEqual(1);
         expect(tradesList.get(2).getText()).toEqual('write first protractor test');
 
-        expect(completedAmount.count()).toEqual(2);
+        expect(tradesList.count()).toEqual(2);
     });
 });
