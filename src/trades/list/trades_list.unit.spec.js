@@ -1,5 +1,6 @@
 /* eslint-env protractor */
 /* global describe, expect, it, beforeEach, inject, module */
+'use strict';
 
 describe('Trades', function () {
 

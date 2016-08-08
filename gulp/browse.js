@@ -1,6 +1,5 @@
 "use strict";
 
-const gulp = require('gulp');
 const connect = require('gulp-connect');
 const config = require('./config');
 

@@ -16,10 +16,10 @@ function testIntegration() {
             'configFile': './gulp/protractor/config.js',
             'debug': false,
             'autoStartStopServer': true
-        }))
-        .on('error', function (e) {
-            console.log(e);
-        });
+        })).on('error', e => {
+                throw e;
+            }
+        );
 }
 
 function testUnit() {

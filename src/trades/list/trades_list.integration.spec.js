@@ -1,5 +1,7 @@
 /* eslint-env protractor */
 /* global describe, expect, it */
+'use strict';
+
 describe('angularjs trades  list', function () {
     it('should display trade', function () {
         browser.get('localhost:9000');

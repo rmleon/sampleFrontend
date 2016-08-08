@@ -4,9 +4,9 @@ const config = require('./config');
 const vendorIncludes = require('./vendor-includes');
 
 const cleanCss = require('gulp-clean-css');
-const changed = require('gulp-changed');
 const concat = require('gulp-concat');
 const gulp = require('gulp');
+const util = require('gulp-util');
 const hash = require('gulp-hash-filename');
 const inject = require('gulp-inject');
 const jade = require('gulp-jade');
@@ -27,8 +27,7 @@ module.exports = {
 
 function bundleJsVendor() {
     return gulp.src(vendorIncludes.js)
-        .pipe(concat(`${config.ASSETS_DIR}/vendor.js`))
-        .pipe(uglify())
+        .pipe(concat(`${config.ASSETS_DIR}/vendor-min.js`))
         .pipe(gulp.dest(config.BUILD_DIR));
 }
 
@@ -51,7 +50,6 @@ function bundleCssSrc() {
 
 function bundleComponents() {
     return gulp.src([config.ALL_JADE_IN_SRC, `!${config.MAIN_JADE_IN_SRC}`])
-        .pipe(changed(config.BUILD_DIR, {extension: '.html'}))
         .pipe(jade({pretty: true}))
         .pipe(gulp.dest(config.BUILD_DIR));
 }
@@ -65,7 +63,7 @@ function bundleJsSrc() {
     return merge(modules, components)
         .pipe(ngAnnotate())
         .pipe(concat(`${config.ASSETS_DIR}/bundle.js`))
-        .pipe(uglify())
+        .pipe(uglify().on('error', util.log))
         .pipe(gulp.dest(config.BUILD_DIR));
 }
 
@@ -91,5 +89,6 @@ function bundleMain() {
         .pipe(inject(bundlePipe, {name: 'bundle'}))
         .pipe(inject(vendorPipe, {name: 'vendor'}))
         .pipe(jade({pretty: true}))
+        .pipe(gulp.dest(config.BUILD_DIR))
         .pipe(gulp.dest(config.BUILD_DIR));
 }

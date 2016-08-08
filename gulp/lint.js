@@ -5,10 +5,12 @@ const config = require('./config');
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const scsslint = require('gulp-sass-lint');
+const puglint = require('gulp-pug-linter');
 
 module.exports = {
     lintJs,
-    lintScss
+    lintScss,
+    lintPug
 };
 
 function lintJs() {
@@ -23,4 +25,10 @@ function lintScss() {
         .pipe(scsslint())
         .pipe(scsslint.format())
         .pipe(scsslint.failOnError());
+}
+
+function lintPug() {
+    return gulp.src(config.ALL_JADE_IN_SRC)
+        .pipe(puglint())
+        .pipe(puglint.reporter('fail'));
 }
