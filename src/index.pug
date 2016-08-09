@@ -11,9 +11,8 @@ html(lang="en")
         //- endinject
         //- bundle:css
         //- endinject
-    body(ng-app="TopLevelApp" layout="column" ng-cloak)
-        md-content.md-padding(layout-xs="column" layout="row" ng-controller="MainController")
-            rl-trades-list/
+    body(ng-app="rlApp", ng-cloak)
+        ng-view
 
         //- vendor:js
         //- endinject

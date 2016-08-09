@@ -1,8 +1,6 @@
-md-card
-    md-card-title
-        md-card-title-text Trades
-    md-card-content(layout="row")
-        md-button.md-raised Add
-        md-grid-list(md-cols=5, md-gutter="12px")
-            rl-list-item-headers
-            rl-list-item-row(ng-repeat="trade in trades")
+md-toolbar.md-hue-3(layout="row")
+    .md-toolbar-tools Trades
+md-button.md-raised Add
+md-grid-list(md-cols=5, md-gutter="12px", md-row-height="24px")
+    rl-trades-list-header
+    rl-trades-list-row(ng-repeat="trade in trades")

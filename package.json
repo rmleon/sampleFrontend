@@ -16,9 +16,10 @@
   "author": "Ricardo",
   "dependencies": {
     "angular": "1.5.8",
-    "angular-animate": "1.5.7",
-    "angular-aria": "1.5.7",
+    "angular-animate": "1.5.8",
+    "angular-aria": "1.5.8",
     "angular-material": "1.1.0-rc.5",
+    "angular-resource": "1.5.8",
     "angular-route": "1.5.8"
   },
   "devDependencies": {
@@ -34,6 +35,7 @@
     "gulp-eslint": "^3.0.1",
     "gulp-hash-filename": "1.0.1",
     "gulp-inject": "4.1.0",
+    "gulp-iife": "0.3.0",
     "gulp-jade": "1.1.0",
     "gulp-karma-runner": "1.1.11",
     "gulp-minify": "0.0.13",

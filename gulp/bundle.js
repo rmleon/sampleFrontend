@@ -8,6 +8,7 @@ const concat = require('gulp-concat');
 const gulp = require('gulp');
 const util = require('gulp-util');
 const hash = require('gulp-hash-filename');
+const iife = require("gulp-iife");
 const inject = require('gulp-inject');
 const jade = require('gulp-jade');
 const merge = require('merge2');
@@ -62,6 +63,7 @@ function bundleJsSrc() {
 
     return merge(modules, components)
         .pipe(ngAnnotate())
+        .pipe(iife())
         .pipe(concat(`${config.ASSETS_DIR}/bundle.js`))
         .pipe(uglify().on('error', util.log))
         .pipe(gulp.dest(config.BUILD_DIR));

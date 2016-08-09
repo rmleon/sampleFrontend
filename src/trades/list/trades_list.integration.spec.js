@@ -1,6 +1,6 @@
 /* eslint-env protractor */
 /* global describe, expect, it */
-'use strict';
+"use strict";
 
 describe('angularjs trades  list', function () {
     it('should display trade', function () {
