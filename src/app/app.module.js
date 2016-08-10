@@ -20,7 +20,6 @@ angular.module('rlApp').run(['$route', function () {
 angular.module('rlApp').run(rlAppRun);
 
 function rlAppRun($rootScope) {
-    /*eslint no-console:0*/
     $rootScope.$on('$viewContentLoaded', function () {
         if (window.componentHandler) {
             window.componentHandler.upgradeAllRegistered();
