@@ -9,7 +9,7 @@
   "disallowDuplicateAttributes": true,
   "disallowHtmlText": true,
   "disallowIdAttributeWithStaticValue": true,
-  "disallowIdLiterals": true,
+  "disallowIdLiterals": null,
   "disallowIdLiteralsBeforeAttributes": null,
   "disallowMultipleLineBreaks": true,
   "disallowSpaceAfterCodeOperator": true,

@@ -1,6 +1,54 @@
-md-toolbar.md-hue-3(layout="row")
-    .md-toolbar-tools Trades
-md-button.md-raised Add
-md-grid-list(md-cols=5, md-gutter="12px", md-row-height="24px")
-    rl-trades-list-header
-    rl-trades-list-row(ng-repeat="trade in trades")
+.mdl-layout.mdl-js-layout.mdl-layout--no-drawer-button(ng-app="rlTrades")
+    header.layout__header
+        .mdl-layout__header-row
+            span.mdl-layout__title Trades
+    main.mdl-layout__content
+        form(ng-controller="addController", ng-submit="submit()")
+            table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
+                thead
+                    tr
+                        th.mdl-data-table__cell--non-numeric
+                        th.mdl-data-table__cell--non-numeric Date
+                        th.mdl-data-table__cell--non-numeric Symbol
+                        th.mdl-data-table__cell--non-numeric Direction
+                        th Quantity
+                        th Price
+                tbody
+                    tr(ng-show="!trades.length")
+                        td.mdl-data-table__cell--non-numeric(colspan=6) No Trades Available
+                    tr(ng-repeat="trade in trades")
+                        td.mdl-data-table__cell--non-numeric
+                            button.mdl-button.mdl-js-button.mdl-button--icon.mdl-button--colored(disabled)
+                                i.material-icons delete forever
+                        td.mdl-data-table__cell--non-numeric {{trade.date | date:"MM/dd/yyyy"}}
+                        td.mdl-data-table__cell--non-numeric {{trade.symbol}}
+                        td.mdl-data-table__cell--non-numeric {{trade.direction | direction}}
+                        td {{trade.quantity | number}}
+                        td {{trade.price | currency}}
+                    tr
+                        td.mdl-data-table__cell--non-numeric
+                            button.mdl-button.mdl-js-button.mdl-button--icon.mdl-button--colored(type="submit")
+                                i.material-icons add
+                        td.mdl-data-table__cell--non-numeric
+                            .mdl-textfield.mdl-js-textfield
+                                input.mdl-textfield__input(type="date", ng-model="trade.date", required)
+                                span.mdl-textfield__error The date is required
+                        td.mdl-data-table__cell--non-numeric
+                            .mdl-textfield.mdl-js-textfield
+                                input.mdl-textfield__input(type="text", name="symbol", ng-model="trade.symbol", required, placeholder="Symbol")
+                                span.mdl-textfield__error The symbol is required
+                        td.mdl-data-table__cell--non-numeric
+                            label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect
+                                input.mdl-radio__button(type="radio", name="direction", value="B", ng-model="trade.direction", checked)
+                                span.mdl-radio__label Buy
+                            label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect
+                                input.mdl-radio__button(type="radio", name="direction", value="S", ng-model="trade.direction")
+                                span.mdl-radio__label Sell
+                        td
+                            .mdl-textfield.mdl-js-textfield
+                                input.mdl-textfield__input(type="number", min="0", name="quantity", ng-model="trade.quantity", required, placeholder="Quantity")
+                                span.mdl-textfield__error Invalid format
+                        td
+                            .mdl-textfield.mdl-js-textfield
+                                input.mdl-textfield__input(type="number", pattern="-?[0-9]*(\.[0-9]+)?", name="price", ng-model="trade.price", required, placeholder="Price")
+                                span.mdl-textfield__error Invalid format
