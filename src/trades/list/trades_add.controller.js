@@ -9,8 +9,8 @@ function rlTradesAddFormController($scope, rlTradesResource) {
     $scope.trade = {id: id};
     $scope.submit = function () {
         const newTrade = new rlTradesResource($scope.trade);
-        newTrade.$save(function (savedTrade) {
-            $scope.trades.push(savedTrade);
+        newTrade.$save(function () {
+            $scope.trades.push($scope.trade);
         });
     };
 }
