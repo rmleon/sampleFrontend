@@ -23,17 +23,3 @@ function rlTradesConfig($routeProvider) {
         template: '<rl-trades-list></rl-trades-list>'
     });
 }
-
-/**
- function rlTradesConfig($routeProvider) {
-    $routeProvider.when('/', {
-        template: '<rl-trades-list trades="$resolve.trades"></rl-trades-list>',
-        resolve: {
-            trades: ['rlTradesResource', function (rlTradesResource) {
-                return rlTradesResource.query({start: 0, limit: 100}).$promise.then(function (data) {
-                    return data;
-                });
-            }]
-        }
-    });
-}*/
