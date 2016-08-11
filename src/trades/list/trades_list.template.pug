@@ -16,9 +16,9 @@
                 tbody
                     tr(ng-show="!trades.length")
                         td.mdl-data-table__cell--non-numeric(colspan=6) No Trades Available
-                    tr(ng-repeat="trade in trades")
+                    tr(ng-repeat="trade in trades track by $index")
                         td.mdl-data-table__cell--non-numeric
-                            button.mdl-button.mdl-js-button.mdl-button--icon.mdl-button--colored(disabled)
+                            button.mdl-button.mdl-js-button.mdl-button--icon.mdl-button--colored(ng-disabled="removing[$index]", ng-click="remove($index)")
                                 i.material-icons delete forever
                         td.mdl-data-table__cell--non-numeric {{trade.date | date:"MM/dd/yyyy"}}
                         td.mdl-data-table__cell--non-numeric {{trade.symbol}}
